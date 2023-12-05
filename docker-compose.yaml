@@ -6,7 +6,7 @@ services:
     container_name: postgre-temlates
     image: postgres:alpine3.17
     networks: 
-      - temlates
+      - templates
     restart: always
     ports:
       - '5432:5432'
@@ -18,7 +18,7 @@ services:
       - .local/services/postgre:/var/lib/postgresql/data
     init: true
     healthcheck:
-      test: ["CMD-SHELL", "pg_isready -U ${POSTGRES_USER} -d ${POSTGRES_DB}"]
+      test: ["CMD-SHELL", "pg_isready -U ${DB_USER} -d ${DB_NAME}"]
       interval: 20s
       timeout: 5s
       retries: 5
