@@ -1,7 +1,7 @@
 from fastapi import FastAPI
 
-from auth.base_config import auth_backend, fastapi_users
-from auth.schemas import UserRead, UserCreate
+from src.auth.base_config import auth_backend, fastapi_users
+from src.auth.schemas import UserRead, UserCreate
 
 
 
