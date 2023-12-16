@@ -1,10 +1,19 @@
 from datetime import datetime
 
 from fastapi_users_db_sqlalchemy import SQLAlchemyBaseUserTable
-from sqlalchemy import Table, Column, Integer, String, TIMESTAMP, ForeignKey, JSON, Boolean, MetaData
+from sqlalchemy import JSON
+from sqlalchemy import TIMESTAMP
+from sqlalchemy import Boolean
+from sqlalchemy import Column
+from sqlalchemy import ForeignKey
+from sqlalchemy import Integer
+from sqlalchemy import MetaData
+from sqlalchemy import String
+from sqlalchemy import Table
 
-from src.database import Base, metadata
+from src.database import Base
 
+metadata = MetaData()
 
 role = Table(
     "role",
@@ -16,7 +25,7 @@ role = Table(
 
 
 class User(SQLAlchemyBaseUserTable[int], Base):
-    __tablename__ = 'user'
+    __tablename__ = "user"
 
     id = Column(Integer, primary_key=True)
     email = Column(String, nullable=False)

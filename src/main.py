@@ -1,12 +1,11 @@
 from fastapi import FastAPI
 
-from src.auth.base_config import auth_backend, fastapi_users
-from src.auth.schemas import UserRead, UserCreate
+from src.auth.base_config import auth_backend
+from src.auth.base_config import fastapi_users
+from src.auth.schemas import UserCreate
+from src.auth.schemas import UserRead
 
-
-app = FastAPI(
-    title="Travell App"
-)
+app = FastAPI(title="Travell App")
 
 app.include_router(
     fastapi_users.get_auth_router(auth_backend),
@@ -19,4 +18,3 @@ app.include_router(
     prefix="/auth",
     tags=["Auth"],
 )
-
