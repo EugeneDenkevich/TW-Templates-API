@@ -4,7 +4,6 @@ from src.auth.base_config import auth_backend, fastapi_users
 from src.auth.schemas import UserRead, UserCreate
 
 
-
 app = FastAPI(
     title="Travell App"
 )
