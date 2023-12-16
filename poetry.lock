@@ -134,6 +134,20 @@ docs = ["Sphinx (>=5.3.0,<5.4.0)", "sphinx-rtd-theme (>=1.2.2)", "sphinxcontrib-
 test = ["flake8 (>=6.1,<7.0)", "uvloop (>=0.15.3)"]
 
 [[package]]
+name = "autoflake"
+version = "2.2.1"
+description = "Removes unused imports and unused variables"
+optional = false
+python-versions = ">=3.8"
+files = [
+    {file = "autoflake-2.2.1-py3-none-any.whl", hash = "sha256:265cde0a43c1f44ecfb4f30d95b0437796759d07be7706a2f70e4719234c0f79"},
+    {file = "autoflake-2.2.1.tar.gz", hash = "sha256:62b7b6449a692c3c9b0c916919bbc21648da7281e8506bcf8d3f8280e431ebc1"},
+]
+
+[package.dependencies]
+pyflakes = ">=3.0.0"
+
+[[package]]
 name = "bcrypt"
 version = "4.1.2"
 description = "Modern password hashing for your software and your servers"
@@ -1183,4 +1197,4 @@ standard = ["colorama (>=0.4)", "httptools (>=0.5.0)", "python-dotenv (>=0.13)",
 [metadata]
 lock-version = "2.0"
 python-versions = "3.11.5"
-content-hash = "16125456746f7a558ea312bab1e95b5fefdfc9867b6f2c6db5be9c07c7bc4d11"
+content-hash = "1c5c460676cfc59824abf72d9492cfa8e3c2ca8b9c1b4ea2b297cd4a8e4740a0"

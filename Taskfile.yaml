@@ -1,1 +1,28 @@
 version: '3'
+
+output: 'prefixed'
+
+tasks:
+
+  code-format:
+    cmds:
+      - >
+        poetry run autoflake
+        --exclude '*.local*'
+        --expand-star-imports
+        --in-place
+        --recursive
+        --remove-all-unused-imports
+        --remove-duplicate-keys
+        --remove-unused-variables
+        --verbose
+        .
+      - poetry run black .
+      - poetry run isort .
+    desc: "format code with autoflake, black, isort"
+
+  run-dev:
+    cmds:
+      - poetry run alembic upgrade head
+      - poetry run uvicorn src.main:app --reload
+
