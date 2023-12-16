@@ -1,7 +1,7 @@
 """init migration
 
 Revision ID: b69b0a194ef0
-Revises: 
+Revises:
 Create Date: 2023-12-16 12:35:19.746404
 
 """
