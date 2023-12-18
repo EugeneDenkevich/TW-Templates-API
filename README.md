@@ -18,6 +18,9 @@ pyenv init - | source
 ```
 pyenv install 3.11.5
 ```
+```
+pyenv local 3.11.5
+```
 ## Run app
 ```
 cp .env-example .env
