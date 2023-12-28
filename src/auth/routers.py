@@ -2,10 +2,11 @@ from fastapi import APIRouter, Depends
 from src.auth.base_config import current_user
 
 from src.auth.models import User
+from src.auth.schemas import UserRead
 
 me_router = APIRouter()
 
-@me_router.get("/me")
+@me_router.get("/me", response_model=UserRead)
 async def me(user: User = Depends(current_user)):
     return {
             "id": user.id,
