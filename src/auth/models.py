@@ -4,11 +4,9 @@ from fastapi_users_db_sqlalchemy import SQLAlchemyBaseUserTable
 from sqlalchemy import TIMESTAMP
 from sqlalchemy import Boolean
 from sqlalchemy import Column
-from sqlalchemy import ForeignKey
 from sqlalchemy import Integer
 from sqlalchemy import MetaData
 from sqlalchemy import String
-from sqlalchemy import Table
 
 from src.database import Base
 

@@ -40,5 +40,6 @@ app.include_router(
 app.include_router(
     me_router,
     prefix="/auth",
-    tags=["auth"]
+    tags=["auth"],
+    
 )
