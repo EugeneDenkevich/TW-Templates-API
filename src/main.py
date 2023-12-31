@@ -1,15 +1,11 @@
-from fastapi import FastAPI, Depends
+from fastapi import FastAPI
 from fastapi.middleware.cors import CORSMiddleware
 
 from src.auth.base_config import auth_backend
 from src.auth.base_config import fastapi_users
+from src.auth.routers import me_router
 from src.auth.schemas import UserCreate
 from src.auth.schemas import UserRead
-from src.auth.base_config import current_user
-from src.auth.routers import me_router
-
-from src.auth.models import User
-
 
 app = FastAPI(title="Travell App")
 
@@ -41,5 +37,4 @@ app.include_router(
     me_router,
     prefix="/auth",
     tags=["auth"],
-    
 )

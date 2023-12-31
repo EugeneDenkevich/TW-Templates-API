@@ -4,8 +4,9 @@ from fastapi import Depends
 from fastapi import Request
 from fastapi_users import BaseUserManager
 from fastapi_users import IntegerIDMixin
-from fastapi_users import exceptions, models, schemas
-
+from fastapi_users import exceptions
+from fastapi_users import models
+from fastapi_users import schemas
 
 from src.auth.models import User
 from src.auth.utils import get_user_db
@@ -45,7 +46,6 @@ class UserManager(IntegerIDMixin, BaseUserManager[User, int]):
         existing_user = await self.user_db.get_by_email(user_create.email)
         if existing_user is not None:
             raise exceptions.UserAlreadyExists()
-
 
         user_dict = user_create.create_update_dict_superuser()
         password = user_dict.pop("password")
