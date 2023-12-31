@@ -24,7 +24,7 @@ tasks:
   run:
     cmds:
       - poetry run alembic upgrade head
-      - poetry run uvicorn src.main:app --reload
+      - poetry run uvicorn api.main:app --reload
 
   reload:
     cmds:

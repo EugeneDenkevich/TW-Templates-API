@@ -8,7 +8,7 @@ from sqlalchemy import Integer
 from sqlalchemy import MetaData
 from sqlalchemy import String
 
-from src.database import Base
+from api.database import Base
 
 metadata = MetaData()
 

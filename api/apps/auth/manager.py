@@ -1,5 +1,7 @@
 from typing import Optional
 
+from apps.auth.models import User
+from apps.auth.utils import get_user_db
 from fastapi import Depends
 from fastapi import Request
 from fastapi_users import BaseUserManager
@@ -8,9 +10,7 @@ from fastapi_users import exceptions
 from fastapi_users import models
 from fastapi_users import schemas
 
-from src.auth.models import User
-from src.auth.utils import get_user_db
-from src.config import SECRET_AUTH
+from api.config import SECRET_AUTH
 
 
 class UserManager(IntegerIDMixin, BaseUserManager[User, int]):

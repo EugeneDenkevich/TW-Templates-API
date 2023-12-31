@@ -6,7 +6,7 @@ from sqlalchemy.ext.declarative import declarative_base
 from sqlalchemy.orm import registry
 from sqlalchemy.orm import sessionmaker
 
-from src.config import APP_DB_URL
+from api.config import APP_DB_URL
 
 Base: registry = declarative_base()
 
