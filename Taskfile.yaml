@@ -4,7 +4,7 @@ output: 'prefixed'
 
 tasks:
 
-  code-format:
+  format:
     cmds:
       - >
         poetry run autoflake
@@ -21,8 +21,12 @@ tasks:
       - poetry run isort .
     desc: "format code with autoflake, black, isort"
 
-  run-dev:
+  run:
     cmds:
       - poetry run alembic upgrade head
       - poetry run uvicorn src.main:app --reload
 
+  reload:
+    cmds:
+      - task: format
+      - task: run
