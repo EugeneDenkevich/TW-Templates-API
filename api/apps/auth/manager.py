@@ -1,8 +1,6 @@
 from typing import Optional
 from typing import final
 
-from apps.auth.models import User
-from apps.auth.utils import get_user_db
 from fastapi import Depends
 from fastapi import Request
 from fastapi_users import BaseUserManager
@@ -10,7 +8,10 @@ from fastapi_users import IntegerIDMixin
 from fastapi_users import exceptions
 from fastapi_users import models
 from fastapi_users import schemas
-from settings import settings
+
+from api.apps.auth.models import User
+from api.apps.auth.utils import get_user_db
+from api.settings import settings
 
 
 @final

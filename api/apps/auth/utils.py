@@ -1,10 +1,10 @@
 from typing import final
 
-from apps.auth.models import User
 from fastapi import Depends
 from fastapi_users_db_sqlalchemy import SQLAlchemyUserDatabase
 from sqlalchemy.ext.asyncio import AsyncSession
 
+from api.apps.auth.models import User
 from api.database import get_async_session
 
 

@@ -1,14 +1,15 @@
 from typing import final
 
-from apps.auth.manager import get_user_manager
-from apps.auth.models import User
 from fastapi_users import FastAPIUsers
 from fastapi_users import models
 from fastapi_users.authentication import AuthenticationBackend
 from fastapi_users.authentication import CookieTransport
 from fastapi_users.authentication import JWTStrategy
 from fastapi_users.jwt import generate_jwt
-from settings import settings
+
+from api.apps.auth.manager import get_user_manager
+from api.apps.auth.models import User
+from api.settings import settings
 
 cookie_transport = CookieTransport(
     cookie_name="ownertkn", cookie_max_age=settings.TIME_TOKEN_EXPIRED

@@ -1,8 +1,9 @@
-from apps.auth.base_config import current_user
-from apps.auth.models import User
-from apps.auth.schemas import UserRead
 from fastapi import APIRouter
 from fastapi import Depends
+
+from api.apps.auth.base_config import current_user
+from api.apps.auth.models import User
+from api.apps.auth.schemas import UserRead
 
 me_router = APIRouter(
     prefix="/auth",

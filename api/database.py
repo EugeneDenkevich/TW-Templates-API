@@ -1,11 +1,12 @@
 from typing import AsyncGenerator
 
-from settings import settings
 from sqlalchemy.ext.asyncio import AsyncSession
 from sqlalchemy.ext.asyncio import create_async_engine
 from sqlalchemy.ext.declarative import declarative_base
 from sqlalchemy.orm import registry
 from sqlalchemy.orm import sessionmaker
+
+from api.settings import settings
 
 Base: registry = declarative_base()
 

@@ -1,12 +1,13 @@
 from typing import Final
 
-from apps.auth.base_config import auth_backend
-from apps.auth.base_config import fastapi_users
-from apps.auth.routers import me_router
-from apps.auth.schemas import UserCreate
-from apps.auth.schemas import UserRead
 from fastapi import FastAPI
 from fastapi.middleware.cors import CORSMiddleware
+
+from api.apps.auth.base_config import auth_backend
+from api.apps.auth.base_config import fastapi_users
+from api.apps.auth.routers import me_router
+from api.apps.auth.schemas import UserCreate
+from api.apps.auth.schemas import UserRead
 
 app: Final[FastAPI] = FastAPI(title="Travell App")
 
