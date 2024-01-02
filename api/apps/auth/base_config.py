@@ -1,3 +1,5 @@
+from typing import final
+
 from apps.auth.manager import get_user_manager
 from apps.auth.models import User
 from fastapi_users import FastAPIUsers
@@ -6,15 +8,14 @@ from fastapi_users.authentication import AuthenticationBackend
 from fastapi_users.authentication import CookieTransport
 from fastapi_users.authentication import JWTStrategy
 from fastapi_users.jwt import generate_jwt
-
-from api.config import SECRET_AUTH
-from api.config import TIME_TOKEN_EXPIRED
+from settings import settings
 
 cookie_transport = CookieTransport(
-    cookie_name="ownertkn", cookie_max_age=TIME_TOKEN_EXPIRED
+    cookie_name="ownertkn", cookie_max_age=settings.TIME_TOKEN_EXPIRED
 )
 
 
+@final
 class TemplateJWTStrategy(JWTStrategy):
     async def write_token(self, user: models.UP) -> str:
         user_status = user.is_superuser
@@ -31,8 +32,11 @@ class TemplateJWTStrategy(JWTStrategy):
         )
 
 
+@final
 def get_jwt_strategy() -> TemplateJWTStrategy:
-    return TemplateJWTStrategy(secret=SECRET_AUTH, lifetime_seconds=3600)
+    return TemplateJWTStrategy(
+        secret=settings.SECRET_AUTH, lifetime_seconds=3600
+    )
 
 
 auth_backend = AuthenticationBackend(

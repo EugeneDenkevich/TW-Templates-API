@@ -1,4 +1,5 @@
 from datetime import datetime
+from typing import final
 
 from fastapi_users_db_sqlalchemy import SQLAlchemyBaseUserTable
 from sqlalchemy import TIMESTAMP
@@ -13,6 +14,7 @@ from api.database import Base
 metadata = MetaData()
 
 
+@final
 class User(SQLAlchemyBaseUserTable[int], Base):
     __tablename__ = "user"
 

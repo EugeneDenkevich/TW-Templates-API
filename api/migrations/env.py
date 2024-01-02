@@ -11,15 +11,14 @@ sys.path.append(os.path.join(sys.path[0], "api"))
 
 from apps.auth.models import metadata as role_metadata
 from apps.auth.models import user_matadata
-
-from api.config import ALEMBIC_DB_URL
+from settings import settings
 
 # this is the Alembic Config object, which provides
 # access to the values within the .ini file in use.
 config = context.config
 
 section = config.config_ini_section
-config.set_section_option(section, "ALEMBIC_DB_URL", ALEMBIC_DB_URL)
+config.set_section_option(section, "ALEMBIC_DB_URL", settings.ALEMBIC_DB_URL)
 
 # Interpret the config file for Python logging.
 # This line sets up loggers basically.

@@ -30,3 +30,9 @@ tasks:
     cmds:
       - task: format
       - task: run
+
+  sync:
+    cmds:
+      - task: source .venv/bin/activate
+      - task: pip freeze > requirements.txt
+      - task: run
