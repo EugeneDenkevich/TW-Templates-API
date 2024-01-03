@@ -13,7 +13,8 @@ app.add_routers(
     auth_routers,
 )
 
-# Fix this. Make flexible as above
+# Fix this.
+# Make flexible as above more middleware will appear.
 allow_origins = settings.CORS_ALLOW_ORIGINS.split(",")
 
 app.add_middleware(
