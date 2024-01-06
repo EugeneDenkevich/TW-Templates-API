@@ -24,9 +24,15 @@ tasks:
   run:
     cmds:
       - poetry run alembic upgrade head
-      - poetry run uvicorn src.main:app --reload
+      - poetry run python main.py
 
   reload:
     cmds:
       - task: format
+      - task: run
+
+  sync:
+    cmds:
+      - task: source .venv/bin/activate
+      - task: pip freeze > requirements.txt
       - task: run

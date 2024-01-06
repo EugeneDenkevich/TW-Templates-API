@@ -1,4 +1,5 @@
 from datetime import datetime
+from typing import final
 
 from fastapi_users_db_sqlalchemy import SQLAlchemyBaseUserTable
 from sqlalchemy import TIMESTAMP
@@ -8,13 +9,15 @@ from sqlalchemy import Integer
 from sqlalchemy import MetaData
 from sqlalchemy import String
 
-from src.database import Base
+from api.database import Base
 
 metadata = MetaData()
 
 
+@final
 class User(SQLAlchemyBaseUserTable[int], Base):
     __tablename__ = "user"
+    __table_args__ = {"extend_existing": True}
 
     id = Column(Integer, primary_key=True)
     email = Column(String, nullable=False)

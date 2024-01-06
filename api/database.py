@@ -6,11 +6,11 @@ from sqlalchemy.ext.declarative import declarative_base
 from sqlalchemy.orm import registry
 from sqlalchemy.orm import sessionmaker
 
-from src.config import APP_DB_URL
+from api.settings import settings
 
 Base: registry = declarative_base()
 
-engine = create_async_engine(APP_DB_URL, echo=True)
+engine = create_async_engine(settings.APP_DB_URL, echo=True)
 async_session_maker = sessionmaker(
     engine, class_=AsyncSession, expire_on_commit=False
 )
