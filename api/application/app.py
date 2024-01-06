@@ -13,7 +13,9 @@ class App(FastAPI):
         for router_group in routers:
             if isinstance(router_group, tuple):
                 for router in router_group:
-                    self.include_router(router)
+                    self.include_router(
+                        router,
+                    )
             else:
                 self.include_router(router_group)
 
