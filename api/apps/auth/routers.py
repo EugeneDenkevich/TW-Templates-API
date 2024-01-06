@@ -8,26 +8,22 @@ from api.apps.auth.models import User
 from api.apps.auth.schemas import UserCreate
 from api.apps.auth.schemas import UserRead
 
-auth_router = fastapi_users.get_auth_router(auth_backend)
-register_router = fastapi_users.get_register_router(UserRead, UserCreate)
-me_router = APIRouter()
+auth_router = APIRouter(prefix="/auth")
+me_router = APIRouter(prefix="/auth")
+
+auth_router.include_router(fastapi_users.get_auth_router(auth_backend))
+auth_router.include_router(
+    fastapi_users.get_register_router(UserRead, UserCreate)
+)
 
 
 @me_router.get("/me", response_model=UserRead)
-async def me(user: User = Depends(current_user)):
-    data = {
-        "id": user.id,
-        "email": user.email,
-        "is_active": user.is_active,
-        "is_superuser": user.is_superuser,
-        "is_verified": user.is_verified,
-    }
-    return data
+async def get_me(user: User = Depends(current_user)):
+    return user
 
 
 auth_routers = (
     auth_router,
-    register_router,
     me_router,
 )
 
