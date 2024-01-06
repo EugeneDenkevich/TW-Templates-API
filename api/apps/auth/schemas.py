@@ -1,8 +1,10 @@
 from typing import Optional
+from typing import final
 
 from fastapi_users import schemas
 
 
+@final
 class UserRead(schemas.BaseUser[int]):
     id: int
     email: str
@@ -14,6 +16,7 @@ class UserRead(schemas.BaseUser[int]):
         orm_mode = True
 
 
+@final
 class UserCreate(schemas.BaseUserCreate):
     email: str
     is_active: Optional[bool] = True

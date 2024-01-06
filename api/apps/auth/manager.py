@@ -1,4 +1,5 @@
 from typing import Optional
+from typing import final
 
 from fastapi import Depends
 from fastapi import Request
@@ -8,14 +9,15 @@ from fastapi_users import exceptions
 from fastapi_users import models
 from fastapi_users import schemas
 
-from src.auth.models import User
-from src.auth.utils import get_user_db
-from src.config import SECRET_AUTH
+from api.apps.auth.models import User
+from api.apps.auth.utils import get_user_db
+from api.settings import settings
 
 
+@final
 class UserManager(IntegerIDMixin, BaseUserManager[User, int]):
-    reset_password_token_secret = SECRET_AUTH
-    verification_token_secret = SECRET_AUTH
+    reset_password_token_secret = settings.SECRET_AUTH
+    verification_token_secret = settings.SECRET_AUTH
 
     async def on_after_register(
         self, user: User, request: Optional[Request] = None
@@ -58,5 +60,6 @@ class UserManager(IntegerIDMixin, BaseUserManager[User, int]):
         return created_user
 
 
+@final
 async def get_user_manager(user_db=Depends(get_user_db)):
     yield UserManager(user_db)

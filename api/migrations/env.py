@@ -2,24 +2,23 @@ import os
 import sys
 from logging.config import fileConfig
 
+from alembic import context
 from sqlalchemy import engine_from_config
 from sqlalchemy import pool
 
-from alembic import context
-
-sys.path.append(os.path.join(sys.path[0], "src"))
+sys.path.append(os.path.join(sys.path[0], "api"))
 
 
-from src.auth.models import metadata as role_metadata
-from src.auth.models import user_matadata
-from src.config import ALEMBIC_DB_URL
+from api.apps.auth.models import metadata as role_metadata
+from api.apps.auth.models import user_matadata
+from api.settings import settings
 
 # this is the Alembic Config object, which provides
 # access to the values within the .ini file in use.
 config = context.config
 
 section = config.config_ini_section
-config.set_section_option(section, "ALEMBIC_DB_URL", ALEMBIC_DB_URL)
+config.set_section_option(section, "ALEMBIC_DB_URL", settings.ALEMBIC_DB_URL)
 
 # Interpret the config file for Python logging.
 # This line sets up loggers basically.
