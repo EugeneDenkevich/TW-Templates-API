@@ -9,7 +9,7 @@ from api.apps.auth.schemas import UserCreate
 from api.apps.auth.schemas import UserRead
 
 auth_router = APIRouter(prefix="/auth")
-me_router = APIRouter(prefix="/auth")
+me_router = APIRouter(prefix="/users")
 
 auth_router.include_router(fastapi_users.get_auth_router(auth_backend))
 auth_router.include_router(
