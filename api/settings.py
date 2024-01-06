@@ -29,8 +29,10 @@ class Settings(BaseSettings):
     DB_USER: StrictStr
     DB_PASS: StrictStr
     TIME_TOKEN_EXPIRED: int
+    TIME_COOKIE_EXPIRED: int
     SECRET_AUTH: StrictStr
     CORS_ALLOW_ORIGINS: StrictStr
+    DEBUG: bool
 
 
 settings: Final = Settings()
