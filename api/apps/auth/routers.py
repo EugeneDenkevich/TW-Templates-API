@@ -27,7 +27,6 @@ if settings.DEBUG is True:
     )
 
 
-
 routers = (
     auth_router,
     me_router,
