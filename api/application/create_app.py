@@ -7,7 +7,20 @@ from api.application.app import App
 from api.apps.auth.routers import routers as auth_routers
 from api.settings import settings
 
-app: Final[FastAPI] = App(title="Templates App")
+docs_url = None
+redoc_url = None
+
+if settings.DEBUG:
+    docs_url = "/docs"
+    redoc_url = "/redoc"
+
+
+app: Final[FastAPI] = App(
+    title="Templates App",
+    debug=settings.DEBUG,
+    docs_url=docs_url,
+    redoc_url=redoc_url,
+)
 
 app.add_routers(
     auth_routers,

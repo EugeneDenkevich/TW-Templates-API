@@ -31,8 +31,6 @@ tasks:
       - task: format
       - task: run
 
-  sync:
+  test:
     cmds:
-      - task: source .venv/bin/activate
-      - task: pip freeze > requirements.txt
-      - task: run
+      - poetry run pytest -s
