@@ -28,4 +28,3 @@ networks:
   templates:
     name: templates.network
     driver: bridge
- 
