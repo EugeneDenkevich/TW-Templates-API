@@ -8,6 +8,7 @@ from fastapi_users import IntegerIDMixin
 from fastapi_users import exceptions
 from fastapi_users import models
 from fastapi_users import schemas
+from fastapi_users.password import PasswordHelper
 
 from api.apps.auth.models import User
 from api.apps.auth.utils import get_user_db
@@ -47,6 +48,13 @@ class UserManager(IntegerIDMixin, BaseUserManager[User, int]):
         return created_user
 
 
+class CustomPasswordHelper(PasswordHelper):
+    pass
+
+
+password_helper = CustomPasswordHelper()
+
+
 @final
 async def get_user_manager(user_db=Depends(get_user_db)):
-    yield UserManager(user_db)
+    yield UserManager(user_db, password_helper)

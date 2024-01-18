@@ -2,6 +2,8 @@ from typing import Optional
 from typing import final
 
 from fastapi_users import schemas
+from pydantic import BaseModel
+from pydantic import StrictStr
 
 
 @final
@@ -22,3 +24,10 @@ class UserCreate(schemas.BaseUserCreate):
     is_active: Optional[bool] = True
     is_superuser: Optional[bool] = False
     is_verified: Optional[bool] = False
+
+
+@final
+class ChangePassword(BaseModel):
+    current_password: StrictStr
+    new_password: StrictStr
+    new_password_confirm: StrictStr
