@@ -1,6 +1,5 @@
 from fastapi import APIRouter
 from fastapi import Depends
-from fastapi import Response
 from fastapi.exceptions import HTTPException
 from sqlalchemy import update
 from sqlalchemy.ext.asyncio import AsyncSession

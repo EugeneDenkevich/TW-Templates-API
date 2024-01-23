@@ -1,5 +1,9 @@
 import httpx
 
+from tests.conftest import BASE_URL
+from tests.conftest import OWNER_EMAIL
+from tests.conftest import OWNER_PASSWORD
+
 BASE_URL = "http://localhost:8000"
 
 
@@ -13,8 +17,8 @@ def test_me_unauthorized():
 
 
 def test_login():
-    email = "string"
-    password = "string"
+    email = OWNER_EMAIL
+    password = OWNER_PASSWORD
 
     res = httpx.post(
         url=f"{BASE_URL}/auth/login",

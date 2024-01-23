@@ -34,3 +34,9 @@ tasks:
   test:
     cmds:
       - poetry run pytest -s
+  
+  dbinit:
+    cmds:
+      - rm ./dev.db | exit 0
+      - rm -r ./api/migrations/versions/* | exit 0
+      - poetry run alembic revision --autogenerate -m "init_db"

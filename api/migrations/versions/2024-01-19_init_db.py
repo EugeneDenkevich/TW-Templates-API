@@ -1,8 +1,8 @@
-"""remove roles
+"""init_db
 
-Revision ID: bd81cb3c0105
+Revision ID: 512376c17e08
 Revises: 
-Create Date: 2023-12-20 16:36:04.137692
+Create Date: 2024-01-19 13:42:31.930290
 
 """
 from typing import Sequence
@@ -12,7 +12,7 @@ import sqlalchemy as sa
 from alembic import op
 
 # revision identifiers, used by Alembic.
-revision: str = "bd81cb3c0105"
+revision: str = "512376c17e08"
 down_revision: Union[str, None] = None
 branch_labels: Union[str, Sequence[str], None] = None
 depends_on: Union[str, Sequence[str], None] = None
@@ -30,6 +30,7 @@ def upgrade() -> None:
         sa.Column("is_superuser", sa.Boolean(), nullable=False),
         sa.Column("is_verified", sa.Boolean(), nullable=False),
         sa.PrimaryKeyConstraint("id"),
+        sa.UniqueConstraint("email"),
     )
     # ### end Alembic commands ###
 

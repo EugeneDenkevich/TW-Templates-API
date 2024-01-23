@@ -20,7 +20,7 @@ class User(SQLAlchemyBaseUserTable[int], Base):
     __table_args__ = {"extend_existing": True}
 
     id = Column(Integer, primary_key=True)
-    email = Column(String, nullable=False)
+    email = Column(String, nullable=False, unique=True)
     registered_at = Column(TIMESTAMP, default=datetime.utcnow)
     hashed_password: str = Column(String(length=1024), nullable=False)
     is_active: bool = Column(Boolean, default=True, nullable=False)
