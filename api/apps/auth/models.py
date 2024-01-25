@@ -6,12 +6,11 @@ from sqlalchemy import TIMESTAMP
 from sqlalchemy import Boolean
 from sqlalchemy import Column
 from sqlalchemy import Integer
-from sqlalchemy import MetaData
 from sqlalchemy import String
+from sqlalchemy.orm import declarative_base
+from sqlalchemy.orm import registry
 
-from api.database import Base
-
-metadata = MetaData()
+Base: registry = declarative_base()
 
 
 @final
@@ -28,4 +27,4 @@ class User(SQLAlchemyBaseUserTable[int], Base):
     is_verified: bool = Column(Boolean, default=False, nullable=False)
 
 
-user_matadata = Base.metadata
+user_metadata = Base.metadata

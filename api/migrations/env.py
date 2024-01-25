@@ -9,8 +9,9 @@ from sqlalchemy import pool
 sys.path.append(os.path.join(sys.path[0], "api"))
 
 
-from api.apps.auth.models import metadata as role_metadata
-from api.apps.auth.models import user_matadata
+# from api.apps.auth.models import target_metadata
+from api.apps.auth.models import user_metadata
+from api.apps.menu.models import menu_metadata
 from api.settings import settings
 
 # this is the Alembic Config object, which provides
@@ -30,9 +31,10 @@ if config.config_file_name is not None:
 # from myapp import mymodel
 # target_metadata = mymodel.Base.metadata
 target_metadata = [
-    user_matadata,
-    role_metadata,
+    user_metadata,
+    menu_metadata,
 ]
+
 
 # other values from the config, defined by the needs of env.py,
 # can be acquired:
