@@ -33,14 +33,14 @@ class About(Base, BaseMenu):
 
 @final
 class Houses(Base, BaseMenu):
-    __tablename__ = "menu"
+    __tablename__ = "houses"
 
     title = Column(String, nullable=False, unique=True)
 
 
 @final
 class Kitchen(Base, BaseMenu):
-    __tablename__ = "houses"
+    __tablename__ = "kitchen"
 
     title = Column(String, nullable=False, unique=True)
 
