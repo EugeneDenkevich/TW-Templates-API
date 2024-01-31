@@ -5,6 +5,7 @@ from fastapi.middleware.cors import CORSMiddleware
 
 from api.application.app import App
 from api.apps.auth.routers import routers as auth_routers
+from api.apps.menu.routers import routers as menu_routers
 from api.settings import settings
 
 docs_url = None
@@ -24,6 +25,7 @@ app: Final[FastAPI] = App(
 
 app.add_routers(
     auth_routers,
+    menu_routers,
 )
 
 allow_origins = settings.CORS_ALLOW_ORIGINS.split(",")

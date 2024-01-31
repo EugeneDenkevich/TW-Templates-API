@@ -13,7 +13,7 @@ Base: registry = declarative_base()
 class BaseMenu:
     __table_args__ = {"extend_existing": True}
 
-    id = Column(Integer, primary_key=True)
+    id = Column(Integer, primary_key=True, autoincrement=True)
     display = Column(Boolean, default=True, nullable=False)
 
 
