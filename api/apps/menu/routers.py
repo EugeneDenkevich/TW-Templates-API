@@ -50,7 +50,7 @@ async def update_menuadmin(
             continue
         response[manu_name] = {
             "title": menu_item.title,
-            "display": menu_item.display
+            "display": menu_item.display,
         }
         await db_interface.update_record(session, item)
 

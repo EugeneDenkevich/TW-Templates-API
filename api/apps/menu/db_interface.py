@@ -1,4 +1,5 @@
-from sqlalchemy import select, update
+from sqlalchemy import select
+from sqlalchemy import update
 from sqlalchemy.ext.asyncio import AsyncSession
 
 from api.apps.menu import enums
@@ -41,12 +42,15 @@ class DBInterface:
     async def update_record(
         self, session: AsyncSession, item: tuple[str, MenuItem]
     ):
-
         table = getattr(models, item[0].capitalize())
         title = item[1].title
         display = item[1].display
-        
-        stmt = update(table).values(title=title, display=display).where(table.id == 1)
+
+        stmt = (
+            update(table)
+            .values(title=title, display=display)
+            .where(table.id == 1)
+        )
         await session.execute(stmt)
         await session.commit()
 

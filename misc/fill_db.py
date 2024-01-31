@@ -8,6 +8,7 @@ from sqlalchemy import create_engine
 from sqlalchemy import select
 from sqlalchemy.orm import Session
 
+from api.apps.menu import enums
 from api.apps.menu import models
 from api.settings import settings
 
@@ -22,22 +23,10 @@ class DBSession:
 
 class DBInit:
     session: Session = DBSession().get_session()
-    admin_menu = [
-        "Home",
-        "About",
-        "Houses",
-        "Kitchen",
-        "Entertainments",
-        "Nearests",
-        "Special",
-        "Rules",
-        "Gallery",
-        "Contacts",
-    ]
 
     def create_menu(self):
         try:
-            for record in self.admin_menu:
+            for record in enums.Menu.list():
                 self._create_record(record)
 
         except Exception as e:
@@ -49,8 +38,9 @@ class DBInit:
         query = select(_class)
         rec = self.session.execute(query).fetchone()
 
+        record_rus = enums.Menu.to_russian()
         if not rec:
-            rec = _class(title=record, display=True)
+            rec = _class(title=record_rus[record], display=True)
             self.session.add(rec)
             self.session.commit()
             return
